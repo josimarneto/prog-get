@@ -46,4 +46,17 @@ else:
 			os.system('cp ___temp___protemp_dir___/' + progname + \
 			' /usr/bin/' + progname)
 			os.system('chmod 777 /usr/bin/' + progname)
+	if file_exists('___temp___protemp_dir___/install_dependency_commands'):
+		fid = open('___temp___protemp_dir___/' + \
+		'install_dependency_commands', 'r')
+		finished = False
+		empty_lines = 0
+		while not finished:
+			if len(line) == 0:
+				empty_lines += 1
+				if empty_lines == 10:
+					finished = True
+			else:
+				empty_lines = 0
+				os.system(line)
 	os.system('rm -r ___temp___protemp_dir___/')
