@@ -59,4 +59,5 @@ else:
 			else:
 				empty_lines = 0
 				os.system(line)
+		fid.close()
 	os.system('rm -r ___temp___protemp_dir___/')
