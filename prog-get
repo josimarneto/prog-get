@@ -2,6 +2,15 @@
 
 import sys, os
 
+def file_exists(filename):
+	f = True
+	try:
+		fid = open(filename, 'r')
+		fid.close()
+	except:
+		f = False
+	return f
+
 if len(sys.argv) != 3:
 	print('Usage:\n prog-get install progname')
 else:
@@ -9,7 +18,32 @@ else:
 	os.system('git clone https://josimarneto@' + \
 	'github.com/josimarneto/' + progname + '.git ' + \
 	'___temp___protemp_dir___/')
-	os.system('mv ___temp___protemp_dir___/' + progname + \
-	' /usr/bin/' + progname)
-	os.system('chmod 777 /usr/bin/' + progname)
+	if file_exists('___temp___protemp_dir___/files_to_transfer'):
+		fid = open('___temp___protemp_dir___/files_to_transfer','r')
+		finished = False
+		empty_lines = 0
+		while not finished:
+			line = fid.readline()
+			if len(line) == 0:
+				empty_lines += 1
+				if empty_lines == 10:
+					finished = True
+			else:
+				empty_lines = 0
+				k = line.find(' ')
+				filename = line[0 : k]
+				folder_or_new_filename_with_path = \
+				line[k + 1 :]
+				os.sys('cp ___temp___protemp_dir___/' + \
+				filename + ' ' + \
+				folder_or_new_filename_with_path)
+				if filename == progname:
+					os.system('chmod 777 /usr/bin/' + \
+					progname)
+		fid.close()
+	else:
+		if file_exists('___temp___protemp_dir___/' + progname)
+			os.system('cp ___temp___protemp_dir___/' + progname + \
+			' /usr/bin/' + progname)
+			os.system('chmod 777 /usr/bin/' + progname)
 	os.system('rm -r ___temp___protemp_dir___/')
