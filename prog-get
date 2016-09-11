@@ -34,7 +34,7 @@ else:
 				filename = line[0 : k]
 				folder_or_new_filename_with_path = \
 				line[k + 1 :]
-				os.sys('cp ___temp___protemp_dir___/' + \
+				os.system('cp ___temp___protemp_dir___/' + \
 				filename + ' ' + \
 				folder_or_new_filename_with_path)
 				if filename == progname:
@@ -42,7 +42,7 @@ else:
 					progname)
 		fid.close()
 	else:
-		if file_exists('___temp___protemp_dir___/' + progname)
+		if file_exists('___temp___protemp_dir___/' + progname):
 			os.system('cp ___temp___protemp_dir___/' + progname + \
 			' /usr/bin/' + progname)
 			os.system('chmod 777 /usr/bin/' + progname)
