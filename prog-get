@@ -52,6 +52,7 @@ else:
 		finished = False
 		empty_lines = 0
 		while not finished:
+			line = fid.readline()
 			if len(line) == 0:
 				empty_lines += 1
 				if empty_lines == 10:
